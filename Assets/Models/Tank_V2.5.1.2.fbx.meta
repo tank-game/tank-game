@@ -1,0 +1,260 @@
+fileFormatVersion: 2
+guid: 973bb7d1cdbcabb45bfb2a7e7d5c08b4
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Armature.002
+    100002: BezierCurve
+    100004: Bone
+    100006: Bone.001
+    100008: Bone.001_end
+    100010: Bone.002
+    100012: Bone.002_end
+    100014: Bone.003
+    100016: Bone.003_end
+    100018: Bone.004
+    100020: Bone.004_end
+    100022: Bone.005
+    100024: Bone.005_end
+    100026: Bone.006
+    100028: Bone.006_end
+    100030: Bone.007
+    100032: Bone.007_end
+    100034: Bone.008
+    100036: Bone.008_end
+    100038: Bone.009
+    100040: Bone.009_end
+    100042: Bone.010
+    100044: Bone.010_end
+    100046: Bone.011
+    100048: Bone.011_end
+    100050: Bone.012
+    100052: Bone.012_end
+    100054: Bone.013
+    100056: Bone.013_end
+    100058: Bone.014
+    100060: Bone_end
+    100062: Cube
+    100064: Cube.002
+    100066: Cylinder.012
+    100068: Driving Wheel L1
+    100070: Driving Wheel L2
+    100072: Driving Wheel R1
+    100074: Driving Wheel R2
+    100076: Gun and Mantlet
+    100078: Hull
+    100080: //RootNode
+    100082: Text
+    100084: Turret
+    100086: Wheel L1
+    100088: Wheel L2
+    100090: Wheel L3
+    100092: Wheel L4
+    100094: Wheel L5
+    100096: Wheel R1
+    100098: Wheel R2
+    100100: Wheel R3
+    100102: Wheel R5
+    400000: Armature.002
+    400002: BezierCurve
+    400004: Bone
+    400006: Bone.001
+    400008: Bone.001_end
+    400010: Bone.002
+    400012: Bone.002_end
+    400014: Bone.003
+    400016: Bone.003_end
+    400018: Bone.004
+    400020: Bone.004_end
+    400022: Bone.005
+    400024: Bone.005_end
+    400026: Bone.006
+    400028: Bone.006_end
+    400030: Bone.007
+    400032: Bone.007_end
+    400034: Bone.008
+    400036: Bone.008_end
+    400038: Bone.009
+    400040: Bone.009_end
+    400042: Bone.010
+    400044: Bone.010_end
+    400046: Bone.011
+    400048: Bone.011_end
+    400050: Bone.012
+    400052: Bone.012_end
+    400054: Bone.013
+    400056: Bone.013_end
+    400058: Bone.014
+    400060: Bone_end
+    400062: Cube
+    400064: Cube.002
+    400066: Cylinder.012
+    400068: Driving Wheel L1
+    400070: Driving Wheel L2
+    400072: Driving Wheel R1
+    400074: Driving Wheel R2
+    400076: Gun and Mantlet
+    400078: Hull
+    400080: //RootNode
+    400082: Text
+    400084: Turret
+    400086: Wheel L1
+    400088: Wheel L2
+    400090: Wheel L3
+    400092: Wheel L4
+    400094: Wheel L5
+    400096: Wheel R1
+    400098: Wheel R2
+    400100: Wheel R3
+    400102: Wheel R5
+    2100000: Material
+    2100002: No Name
+    2300000: BezierCurve
+    2300002: Cylinder.012
+    2300004: Driving Wheel L1
+    2300006: Driving Wheel L2
+    2300008: Driving Wheel R1
+    2300010: Driving Wheel R2
+    2300012: Gun and Mantlet
+    2300014: Hull
+    2300016: Text
+    2300018: Turret
+    2300020: Wheel L1
+    2300022: Wheel L2
+    2300024: Wheel L3
+    2300026: Wheel L4
+    2300028: Wheel L5
+    2300030: Wheel R1
+    2300032: Wheel R2
+    2300034: Wheel R3
+    2300036: Wheel R5
+    3300000: BezierCurve
+    3300002: Cylinder.012
+    3300004: Driving Wheel L1
+    3300006: Driving Wheel L2
+    3300008: Driving Wheel R1
+    3300010: Driving Wheel R2
+    3300012: Gun and Mantlet
+    3300014: Hull
+    3300016: Text
+    3300018: Turret
+    3300020: Wheel L1
+    3300022: Wheel L2
+    3300024: Wheel L3
+    3300026: Wheel L4
+    3300028: Wheel L5
+    3300030: Wheel R1
+    3300032: Wheel R2
+    3300034: Wheel R3
+    3300036: Wheel R5
+    4300000: Hull
+    4300002: Turret
+    4300004: Gun and Mantlet
+    4300006: Wheel L1
+    4300008: Wheel L2
+    4300010: Wheel L3
+    4300012: Wheel L4
+    4300014: Wheel L5
+    4300016: Driving Wheel L2
+    4300018: Driving Wheel L1
+    4300020: Wheel R1
+    4300022: Wheel R2
+    4300024: Wheel R3
+    4300026: Wheel R5
+    4300028: Cylinder.012
+    4300030: Driving Wheel R2
+    4300032: Driving Wheel R1
+    4300034: BezierCurve
+    4300036: Cube
+    4300038: Cube.002
+    4300040: Text
+    9500000: //RootNode
+    13700000: Cube
+    13700002: Cube.002
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

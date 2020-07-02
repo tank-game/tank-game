@@ -1,21 +1,22 @@
 ﻿using UnityEngine;
 
-public class Tank : MonoBehaviour
+public class Car : MonoBehaviour
 {
-    [Header("Movement")]
     public float motorTorque;
     public float turnAggression;
 
-    public WheelCollider[] leftWheels, rightWheels;
+    public WheelCollider[] frontWheels;
+    public WheelCollider[] rearWheels;
 
     void Update()
     {
-        foreach (WheelCollider wheel in leftWheels)
+        foreach (WheelCollider wheel in frontWheels)
         {
             wheel.motorTorque = Input.GetAxis("Vertical") * motorTorque;
+            wheel.steerAngle = Input.GetAxis("Horizontal") * turnAggression;
         }
 
-        foreach (WheelCollider wheel in rightWheels)
+        foreach (WheelCollider wheel in rearWheels)
         {
             wheel.motorTorque = Input.GetAxis("Vertical") * motorTorque;
         }
