@@ -11,21 +11,13 @@ public class Tank : MonoBehaviour
     private Rigidbody rb;
     private WheelCollider[] wheels;
 
-    private float movementInput, rotationInput;
-
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         wheels = GetComponentsInChildren<WheelCollider>();
     }
 
-    void Update()
-    {
-        movementInput = Input.GetAxis("Vertical");
-        rotationInput = Input.GetAxis("Horizontal");
-    }
-
-    void FixedUpdate()
+    public void Move(float movementInput, float rotationInput)
     {
         foreach (WheelCollider wheel in wheels)
         {
