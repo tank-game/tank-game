@@ -924,7 +924,6 @@ GameObject:
   - component: {fileID: 1470696629}
   - component: {fileID: 1470696633}
   - component: {fileID: 1470696634}
-  - component: {fileID: 1470696635}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -1017,10 +1016,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87bfdfa62738234408ed0757816dd9b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 4
   barrelHinge: {fileID: 955973417}
+  rotationSpeed: 4
   maxBarrelElevation: 20
   maxBarrelDepression: 5
+  barrel: {fileID: 622784865}
+  muzzle: {fileID: 69366513}
+  round: {fileID: 2295382573565364972, guid: 7d4e4ca56e04167408630006f7b971f6, type: 3}
+  explosionEffect: {fileID: 1121192042590650, guid: 1a08caceda3351f4797cb3324c33555f,
+    type: 3}
+  reloadTime: 1
+  power: 100
 --- !u!114 &1470696634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1030,29 +1036,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1470696628}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fafaf40807cfa344a867bc8bc1ae3b8, type: 3}
+  m_Script: {fileID: 11500000, guid: e2f27512bb1e93041bc2c140bef2ed2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  muzzle: {fileID: 69366513}
-  barrel: {fileID: 622784865}
-  round: {fileID: 2295382573565364972, guid: 7d4e4ca56e04167408630006f7b971f6, type: 3}
-  reloadTime: 1
-  power: 200
-  explosionEffect: {fileID: 1121192042590650, guid: 1a08caceda3351f4797cb3324c33555f,
-    type: 3}
---- !u!114 &1470696635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1470696628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 873632c31777c4a4ebd45a315f4c7ed7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cannon: {fileID: 1470696634}
+  turret: {fileID: 1470696633}
 --- !u!1 &1794716467
 GameObject:
   m_ObjectHideFlags: 0

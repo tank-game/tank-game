@@ -2,28 +2,32 @@
 
 public class Turret : MonoBehaviour
 {
-    [Range(1f, 10f)] public float rotationSpeed;
+    [Header("Rotation")]
     public Transform barrelHinge;
+
+    [Range(1f, 10f)] public float rotationSpeed;
     [Range(0f, 90f)] public float maxBarrelElevation;
     [Range(0f, 45f)] public float maxBarrelDepression;
 
-    void Update()
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
-        {
-            LookTowards(hit.point);
-        }
-    }
+    [Header("Shooting")]
+    public GameObject barrel;
+    public Transform muzzle;
 
-    private float ClampAngle(float angle, float min, float max)
-    {
-        angle = (angle > 180f) ? angle - 360f : angle;
-        return Mathf.Clamp(angle, min, max);
-    }
+    public GameObject round;
+    public GameObject explosionEffect;
 
-    private void LookTowards(Vector3 point)
+    // The time (in seconds) for the turret to reload
+    [Range(0f, 10f)] public float reloadTime;
+
+    // The speed at which rounds are shot (in metres/second)
+    [Range(0f, 250f)] public float power;
+
+    private Vector3 target;
+    private float nextShootTime;
+
+    public void AimAt(Vector3 point)
     {
+        target = point;
         Quaternion lookRotation = Quaternion.LookRotation(point - transform.position, Vector3.up);
 
         transform.rotation = Quaternion.Lerp(
@@ -37,5 +41,41 @@ public class Turret : MonoBehaviour
             Quaternion.Euler(ClampAngle(lookRotation.eulerAngles.x, -maxBarrelElevation, maxBarrelDepression), 0f, 0f),
             Time.deltaTime * rotationSpeed
         );
+    }
+
+    public void Shoot()
+    {
+        if (Time.time >= nextShootTime)
+        {
+            GameObject spawnedRound = Instantiate(
+                round,
+                muzzle.position,
+                Quaternion.identity
+            );
+
+            spawnedRound.GetComponent<Rigidbody>().velocity = barrel.transform.forward * power;
+
+            // Automatically reloads the turret
+            nextShootTime = Time.time + reloadTime;
+        }
+    }
+
+    public void ShootRaycast()
+    {
+        if (Time.time >= nextShootTime)
+        {
+            GameObject spawnedRound = Instantiate(
+                round,
+                target,
+                Quaternion.identity
+            );
+
+            nextShootTime = Time.time + reloadTime;
+        }
+    }
+
+    private float ClampAngle(float angle, float min, float max)
+    {
+        return Mathf.Clamp(angle > 180f ? angle - 360f : angle, min, max);
     }
 }
