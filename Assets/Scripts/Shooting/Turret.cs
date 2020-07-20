@@ -10,9 +10,7 @@ public class Turret : MonoBehaviour
     [Range(0f, 45f)] public float maxBarrelDepression;
 
     [Header("Shooting")]
-    public GameObject barrel;
     public Transform muzzle;
-
     public GameObject round;
     public GameObject explosionEffect;
 
@@ -22,19 +20,15 @@ public class Turret : MonoBehaviour
     // The speed at which rounds are shot (in metres/second)
     [Range(0f, 250f)] public float power;
 
-    private Vector3 target;
     private float nextShootTime;
 
     public void AimAt(Vector3 point)
     {
-        target = point;
         Quaternion lookRotation = Quaternion.LookRotation(point - transform.position, Vector3.up);
 
-        transform.rotation = Quaternion.Lerp(
-            transform.rotation,
-            Quaternion.Euler(0f, lookRotation.eulerAngles.y, 0f),
-            Time.deltaTime * rotationSpeed
-        );
+        Quaternion tempRotation = transform.rotation;
+        tempRotation.y = Mathf.Lerp(transform.rotation.y, lookRotation.y, Time.deltaTime * rotationSpeed);
+        transform.rotation = tempRotation;
 
         barrelHinge.localRotation = Quaternion.Lerp(
             barrelHinge.localRotation,
@@ -50,26 +44,12 @@ public class Turret : MonoBehaviour
             GameObject spawnedRound = Instantiate(
                 round,
                 muzzle.position,
-                Quaternion.identity
+                barrelHinge.rotation
             );
 
-            spawnedRound.GetComponent<Rigidbody>().velocity = barrel.transform.forward * power;
+            spawnedRound.GetComponent<Rigidbody>().velocity = muzzle.transform.forward * power;
 
             // Automatically reloads the turret
-            nextShootTime = Time.time + reloadTime;
-        }
-    }
-
-    public void ShootRaycast()
-    {
-        if (Time.time >= nextShootTime)
-        {
-            GameObject spawnedRound = Instantiate(
-                round,
-                target,
-                Quaternion.identity
-            );
-
             nextShootTime = Time.time + reloadTime;
         }
     }
