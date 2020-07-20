@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
@@ -12,7 +12,6 @@ public class Turret : MonoBehaviour
     [Header("Shooting")]
     public Transform muzzle;
     public GameObject round;
-    public GameObject explosionEffect;
 
     // The time (in seconds) for the turret to reload
     [Range(0f, 10f)] public float reloadTime;
