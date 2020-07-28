@@ -9,32 +9,34 @@ public class Tank : MonoBehaviour
         Reverse
     }
 
-    [Header("Engine")]
-    [Range(50f, 250f)] public float accelerationForce;
-    public float brakeForce;
-    [Range(5f, 25f)] public float topSpeed; // In metres/second
+    [Range(10f, 75f)] public float accelerationForce;
+    [Range(10f, 75f)] public float brakeForce;
 
-    [Range(5f, 25f)] public float turnRate; // In degrees/second
+    [Range(5f, 20f)] public float topSpeed; // In metres/second
+    [Range(5f, 20f)] public float turnRate; // In degrees/second
 
-    public Transform wheelModelPrefab;
+    public Gear gear;
+
+    public GameObject wheelModelPrefab;
 
     private Rigidbody rb;
 
     private WheelCollider[] wheelColliders;
-    private Transform[] wheelModels;
-
-    public Gear gear;
+    private GameObject[] wheelModels;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
 
         wheelColliders = GetComponentsInChildren<WheelCollider>();
-        wheelModels = new Transform[wheelColliders.Length];
+        wheelModels = new GameObject[wheelColliders.Length];
+
         for (int i = 0; i < wheelColliders.Length; i++)
         {
-            Transform wheelModel = Instantiate(wheelModelPrefab, wheelColliders[i].transform, false);
-            wheelModel.localScale = Vector3.one * wheelColliders[i].radius * 2f;
+            WheelCollider currentWheelCollider = wheelColliders[i];
+
+            GameObject wheelModel = Instantiate(wheelModelPrefab, currentWheelCollider.transform, false);
+            wheelModel.transform.localScale = Vector3.one * wheelColliders[i].radius * 2f;
             wheelModels[i] = wheelModel;
         }
     }
@@ -43,28 +45,34 @@ public class Tank : MonoBehaviour
     {
         for (int i = 0; i < wheelColliders.Length; i++)
         {
-            WheelCollider wheel = wheelColliders[i];
+            WheelCollider currentWheelCollider = wheelColliders[i];
+            GameObject currentWheelModel = wheelModels[i];
 
-            if (movementInput >= 0)
+            if (movementInput >= 0f)
             {
-                wheel.brakeTorque = 0;
+                currentWheelCollider.brakeTorque = 0f;
 
-                float direction = gear == Gear.Drive ? 1 : -1;
-                wheel.motorTorque = direction * movementInput * accelerationForce;
+                int direction = gear == Gear.Drive ? 1 : -1;
+                currentWheelCollider.motorTorque = direction * movementInput * accelerationForce;
+
+                // Directly limits the tank's velocity
+                if (rb.velocity.magnitude >= topSpeed)
+                {
+                    rb.velocity = rb.velocity.normalized * topSpeed;
+                }
             }
             else
             {
-                wheel.motorTorque = 0;
-                wheel.brakeTorque = -1 * movementInput * brakeForce;
+                currentWheelCollider.motorTorque = 0f;
+                currentWheelCollider.brakeTorque = Mathf.Abs(movementInput) * brakeForce;
             }
-
-            // wheel.motorTorque = rb.velocity.magnitude <= topSpeed ? movementInput * accelerationForce : 0f;
 
             Vector3 position;
             Quaternion rotation;
-            wheel.GetWorldPose(out position, out rotation);
-            wheelModels[i].position = position;
-            wheelModels[i].rotation = rotation;
+            currentWheelCollider.GetWorldPose(out position, out rotation);
+
+            currentWheelModel.transform.position = position;
+            currentWheelModel.transform.rotation = rotation;
         }
 
         Quaternion deltaRotation = Quaternion.AngleAxis(
