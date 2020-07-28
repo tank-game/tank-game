@@ -9,15 +9,18 @@ public class Tank : MonoBehaviour
         Reverse
     }
 
-    public GameObject wheelModelPrefab;
+    public Gear gear;
 
+    [Header("Engine")]
     [Range(10f, 75f)] public float accelerationForce;
     [Range(10f, 75f)] public float brakeForce;
 
     [Range(5f, 20f)] public float topSpeed; // In metres/second
     [Range(5f, 20f)] public float turnRate; // In degrees/second
 
-    public Gear gear;
+    [Header("Tracks")]
+    public GameObject wheelModelPrefab;
+    public bool automaticScaling;
 
     private Rigidbody rb;
 
@@ -36,7 +39,11 @@ public class Tank : MonoBehaviour
             WheelCollider currentWheelCollider = wheelColliders[i];
 
             GameObject wheelModel = Instantiate(wheelModelPrefab, currentWheelCollider.transform, false);
-            wheelModel.transform.localScale = Vector3.one * wheelColliders[i].radius * 2f;
+            if (automaticScaling)
+            {
+                wheelModel.transform.localScale = Vector3.one * wheelColliders[i].radius * 2f;
+
+            }
             wheelModels[i] = wheelModel;
         }
     }
