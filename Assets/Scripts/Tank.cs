@@ -9,6 +9,8 @@ public class Tank : MonoBehaviour
         Reverse
     }
 
+    public GameObject wheelModelPrefab;
+
     [Range(10f, 75f)] public float accelerationForce;
     [Range(10f, 75f)] public float brakeForce;
 
@@ -16,8 +18,6 @@ public class Tank : MonoBehaviour
     [Range(5f, 20f)] public float turnRate; // In degrees/second
 
     public Gear gear;
-
-    public GameObject wheelModelPrefab;
 
     private Rigidbody rb;
 
