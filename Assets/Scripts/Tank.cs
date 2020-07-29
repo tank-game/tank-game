@@ -11,12 +11,14 @@ public class Tank : MonoBehaviour
 
     public Gear gear;
 
-    [Header("Engine")]
-    [Range(10f, 75f)] public float accelerationForce;
-    [Range(10f, 75f)] public float brakeForce;
+    public Transform centreOfMass;
 
-    [Range(5f, 20f)] public float topSpeed; // In metres/second
-    [Range(5f, 20f)] public float turnRate; // In degrees/second
+    [Header("Engine")]
+    [Range(10f, 100f)] public float accelerationForce;
+    [Range(10f, 100f)] public float brakeForce;
+
+    [Range(5f, 30f)] public float topSpeed; // In metres/second
+    [Range(5f, 30f)] public float turnRate; // In degrees/second
 
     [Header("Tracks")]
     public GameObject wheelModelPrefab;
@@ -30,6 +32,10 @@ public class Tank : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        if (centreOfMass != null)
+        {
+            rb.centerOfMass = centreOfMass.localPosition;
+        }
 
         wheelColliders = GetComponentsInChildren<WheelCollider>();
         wheelModels = new GameObject[wheelColliders.Length];
