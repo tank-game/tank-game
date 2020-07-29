@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
@@ -25,9 +25,11 @@ public class Turret : MonoBehaviour
     {
         Quaternion lookRotation = Quaternion.LookRotation(point - transform.position, Vector3.up);
 
-        Quaternion tempRotation = transform.rotation;
-        tempRotation.y = Mathf.Lerp(transform.rotation.y, lookRotation.y, Time.deltaTime * rotationSpeed);
-        transform.rotation = tempRotation;
+        transform.rotation = Quaternion.Lerp(
+            transform.rotation,
+            Quaternion.Euler(0f, lookRotation.eulerAngles.y, 0f),
+            Time.deltaTime * rotationSpeed
+        );
 
         barrelHinge.localRotation = Quaternion.Lerp(
             barrelHinge.localRotation,
