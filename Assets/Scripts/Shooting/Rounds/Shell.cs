@@ -9,7 +9,7 @@ public class Shell : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag != "Barrel" && other.gameObject.tag != "Player")
+        if (other.gameObject.tag != "Barrel")
         {
             Instantiate(explosionEffect, transform.position, transform.rotation);
 

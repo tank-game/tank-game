@@ -12,10 +12,5 @@ public class TurretController : MonoBehaviour
         {
             turret.AimAt(hit.point);
         }
-
-        if (Input.GetMouseButton(0))
-        {
-            turret.Shoot();
-        }
     }
 }
