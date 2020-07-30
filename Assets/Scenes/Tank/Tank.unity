@@ -2657,7 +2657,6 @@ GameObject:
   - component: {fileID: 2762314635496402587}
   - component: {fileID: 2762314635496402584}
   - component: {fileID: 2762314635496402590}
-  - component: {fileID: 2762314635496402662}
   m_Layer: 0
   m_Name: RealisticTank
   m_TagString: Player
@@ -2665,20 +2664,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2762314635496402662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2762314635496402661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4179affb17be734fa371c5ac1eb6141, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponControllers:
-  - {fileID: 0}
 --- !u!4 &2762314635651304626
 Transform:
   m_ObjectHideFlags: 0

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class WeaponRack : MonoBehaviour
+public class WeaponControllerRack : MonoBehaviour
 {
     public WeaponController[] weaponControllers;
 
