@@ -125,7 +125,7 @@ MonoBehaviour:
   explosionEffect: {fileID: 1121192042590650, guid: 1a08caceda3351f4797cb3324c33555f,
     type: 3}
   blastRadius: 10
-  explosionForce: 1000
+  explosionForce: 250
 --- !u!96 &5772787459865371138
 TrailRenderer:
   serializedVersion: 2

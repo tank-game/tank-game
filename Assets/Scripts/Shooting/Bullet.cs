@@ -2,11 +2,17 @@
 
 public class Bullet : MonoBehaviour
 {
+    public float damage;
+
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag != "Barrel")
         {
-            Debug.Log("Hit " + other.gameObject.name + "!");
+            Target target = other.gameObject.GetComponent<Target>();
+            if (target)
+            {
+                target.Hit(damage);
+            }
         }
     }
 }

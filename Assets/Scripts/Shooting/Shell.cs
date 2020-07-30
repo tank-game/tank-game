@@ -15,6 +15,13 @@ public class Shell : MonoBehaviour
 
             foreach (Collider nearbyObject in Physics.OverlapSphere(transform.position, blastRadius))
             {
+                Target target = nearbyObject.GetComponent<Target>();
+                if (target)
+                {
+                    // TODO: Get blast damage working properly
+                    target.Hit(explosionForce);
+                }
+
                 Rigidbody rigidbody = nearbyObject.GetComponent<Rigidbody>();
                 if (rigidbody)
                 {
