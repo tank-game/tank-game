@@ -406,9 +406,12 @@ GameObject:
   m_Component:
   - component: {fileID: 459387406}
   - component: {fileID: 459387405}
-  - component: {fileID: 459387408}
   - component: {fileID: 459387404}
+  - component: {fileID: 459387408}
   - component: {fileID: 459387407}
+  - component: {fileID: 459387411}
+  - component: {fileID: 459387410}
+  - component: {fileID: 459387409}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -490,6 +493,52 @@ MonoBehaviour:
   muzzle: {fileID: 69366513}
   power: 150
   reloadTime: 5
+--- !u!114 &459387409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459387403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4179affb17be734fa371c5ac1eb6141, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponControllers:
+  - {fileID: 459387407}
+  - {fileID: 459387410}
+--- !u!114 &459387410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459387403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4acb72f86f134f4f8ddd427e56bee6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gun: {fileID: 459387411}
+--- !u!114 &459387411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459387403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4a4c3a595af6c145bb393dfd34c99b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  round: {fileID: 8167802863755965940, guid: e7e8e473ae6d46147bb864ce4229ff79, type: 3}
+  initialAmmo: 25
+  reloadTime: 2
+  muzzle: {fileID: 69366513}
+  power: 150
+  fireRate: 5
 --- !u!1 &622784865
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,12 +5,12 @@ public class Gun : MonoBehaviour
     [Header("Magazine")]
     public GameObject round;
 
-    [Range(1f, 50f)] public float initialAmmo;
+    [Range(1f, 50f)] public int initialAmmo;
 
     // The time (in seconds) that it takes to load a new magazine
     [Range(1f, 10f)] public float reloadTime;
 
-    private float remainingAmmo;
+    private int remainingAmmo;
 
     [Header("Shooting")]
     public Transform muzzle;

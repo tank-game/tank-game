@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class GunController : RangedWeaponController
+public class GunController : WeaponController
 {
     public Gun gun;
 

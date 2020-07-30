@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class CannonController : RangedWeaponController
+public class CannonController : WeaponController
 {
     public Cannon cannon;
 
