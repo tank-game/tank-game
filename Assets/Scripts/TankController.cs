@@ -11,14 +11,9 @@ public class TankController : MonoBehaviour
         movementInput = Input.GetAxis("Vertical");
         rotationInput = Input.GetAxis("Horizontal");
 
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            tank.gear = Tank.Gear.Drive;
-        }
-
         if (Input.GetKeyDown(KeyCode.E))
         {
-            tank.gear = Tank.Gear.Reverse;
+            tank.ToggleGear();
         }
     }
 

@@ -1,17 +1,22 @@
 ﻿using UnityEngine;
 
+public enum Gear
+{
+    Drive,
+    Reverse
+}
+
 [RequireComponent(typeof(Rigidbody))]
 public class Tank : MonoBehaviour
 {
-    public enum Gear
-    {
-        Drive,
-        Reverse
-    }
-
-    public Gear gear;
-
     public Transform centreOfMass;
+
+    private Rigidbody rb;
+
+    [Header("Gearbox")]
+    public Gear[] gears;
+
+    private int activeGear;
 
     [Header("Engine")]
     [Range(10f, 100f)] public float accelerationForce;
@@ -24,8 +29,6 @@ public class Tank : MonoBehaviour
     public GameObject wheelModelPrefab;
     public bool automaticScaling;
 
-    private Rigidbody rb;
-
     private WheelCollider[] wheelColliders;
     private GameObject[] wheelModels;
 
@@ -36,6 +39,8 @@ public class Tank : MonoBehaviour
         {
             rb.centerOfMass = centreOfMass.localPosition;
         }
+
+        activeGear = 0;
 
         wheelColliders = GetComponentsInChildren<WheelCollider>();
         wheelModels = new GameObject[wheelColliders.Length];
@@ -65,7 +70,7 @@ public class Tank : MonoBehaviour
             {
                 currentWheelCollider.brakeTorque = 0f;
 
-                int direction = gear == Gear.Drive ? 1 : -1;
+                int direction = gears[activeGear] == Gear.Drive ? 1 : -1;
                 currentWheelCollider.motorTorque = direction * movementInput * accelerationForce;
 
                 // Directly limits the tank's velocity
@@ -93,5 +98,17 @@ public class Tank : MonoBehaviour
             transform.up
         );
         rb.MoveRotation(transform.rotation * deltaRotation);
+    }
+
+    public void ToggleGear()
+    {
+        if (activeGear == gears.Length - 1)
+        {
+            activeGear = 0;
+        }
+        else
+        {
+            activeGear += 1;
+        }
     }
 }

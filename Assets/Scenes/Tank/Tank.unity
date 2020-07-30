@@ -427,8 +427,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a408e1fadda0641afd2d1a799ccd3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gear: 0
   centreOfMass: {fileID: 0}
+  gears: 
   accelerationForce: 50
   brakeForce: 50
   topSpeed: 15
@@ -2642,8 +2642,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a408e1fadda0641afd2d1a799ccd3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gear: 0
   centreOfMass: {fileID: 1089976851}
+  gears: 0000000001000000
   accelerationForce: 65
   brakeForce: 100
   topSpeed: 25
