@@ -18,7 +18,6 @@ public class Shell : MonoBehaviour
                 Target target = nearbyObject.GetComponent<Target>();
                 if (target)
                 {
-                    // TODO: Get blast damage working properly
                     target.Hit(explosionForce);
                 }
 
