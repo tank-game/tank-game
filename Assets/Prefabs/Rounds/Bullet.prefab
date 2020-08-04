@@ -121,3 +121,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b92988b18e54ba14d8461f3316c8fd4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 10
+  armourPenetrating: 0

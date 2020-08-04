@@ -492,7 +492,7 @@ MonoBehaviour:
   round: {fileID: 2295382573565364972, guid: 7d4e4ca56e04167408630006f7b971f6, type: 3}
   muzzle: {fileID: 69366513}
   power: 150
-  reloadTime: 5
+  reloadTime: 2
 --- !u!114 &459387409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1086,7 +1086,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb33eaad49e5ce243b1d302bde1bfd60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialHealth: 500
+  initialHealth: 1000
+  damageReduction: 0.5
   destroyOnDeath: 1
 --- !u!1 &1470696628
 GameObject:
