@@ -15,10 +15,10 @@ public class Shell : MonoBehaviour
 
             foreach (Collider nearbyObject in Physics.OverlapSphere(transform.position, blastRadius))
             {
-                Target target = nearbyObject.GetComponent<Target>();
-                if (target)
+                ArmourPlate armourPlate = nearbyObject.GetComponent<ArmourPlate>();
+                if (armourPlate)
                 {
-                    target.Hit(explosionForce);
+                    armourPlate.Hit(explosionForce);
                 }
 
                 Rigidbody rigidbody = nearbyObject.GetComponent<Rigidbody>();

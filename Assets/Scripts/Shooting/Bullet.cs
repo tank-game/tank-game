@@ -8,10 +8,10 @@ public class Bullet : MonoBehaviour
     {
         if (other.gameObject.tag != "Barrel")
         {
-            Target target = other.gameObject.GetComponent<Target>();
-            if (target)
+            ArmourPlate armourPlate = other.gameObject.GetComponent<ArmourPlate>();
+            if (armourPlate)
             {
-                target.Hit(damage);
+                armourPlate.Hit(damage);
             }
         }
     }
