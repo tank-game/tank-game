@@ -12,6 +12,7 @@ public class Tank : MonoBehaviour
     public Transform centreOfMass;
 
     private Rigidbody rb;
+    private Wheel[] wheels;
 
     [Header("Gearbox")]
     public Gear[] gears;
@@ -25,13 +26,6 @@ public class Tank : MonoBehaviour
     [Range(5f, 30f)] public float topSpeed; // In metres/second
     [Range(5f, 30f)] public float turnRate; // In degrees/second
 
-    [Header("Tracks")]
-    public GameObject wheelModelPrefab;
-    public bool automaticScaling;
-
-    private WheelCollider[] wheelColliders;
-    private GameObject[] wheelModels;
-
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -40,31 +34,17 @@ public class Tank : MonoBehaviour
             rb.centerOfMass = centreOfMass.localPosition;
         }
 
+        wheels = GetComponentsInChildren<Wheel>();
+
         activeGear = 0;
-
-        wheelColliders = GetComponentsInChildren<WheelCollider>();
-        wheelModels = new GameObject[wheelColliders.Length];
-
-        for (int i = 0; i < wheelColliders.Length; i++)
-        {
-            WheelCollider currentWheelCollider = wheelColliders[i];
-
-            GameObject wheelModel = Instantiate(wheelModelPrefab, currentWheelCollider.transform, false);
-            if (automaticScaling)
-            {
-                wheelModel.transform.localScale = Vector3.one * wheelColliders[i].radius * 2f;
-
-            }
-            wheelModels[i] = wheelModel;
-        }
     }
 
     public void Move(float movementInput, float rotationInput)
     {
-        for (int i = 0; i < wheelColliders.Length; i++)
+        for (int i = 0; i < wheels.Length; i++)
         {
-            WheelCollider currentWheelCollider = wheelColliders[i];
-            GameObject currentWheelModel = wheelModels[i];
+            Wheel currentWheel = wheels[i];
+            WheelCollider currentWheelCollider = currentWheel.wheelCollider;
 
             if (movementInput >= 0f)
             {
@@ -84,13 +64,6 @@ public class Tank : MonoBehaviour
                 currentWheelCollider.motorTorque = 0f;
                 currentWheelCollider.brakeTorque = Mathf.Abs(movementInput) * brakeForce;
             }
-
-            Vector3 position;
-            Quaternion rotation;
-            currentWheelCollider.GetWorldPose(out position, out rotation);
-
-            currentWheelModel.transform.position = position;
-            currentWheelModel.transform.rotation = rotation;
         }
 
         Quaternion deltaRotation = Quaternion.AngleAxis(
@@ -102,13 +75,10 @@ public class Tank : MonoBehaviour
 
     public void ToggleGear()
     {
-        if (activeGear == gears.Length - 1)
+        activeGear += 1;
+        if (activeGear == gears.Length)
         {
             activeGear = 0;
-        }
-        else
-        {
-            activeGear += 1;
         }
     }
 }
