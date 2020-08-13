@@ -50,7 +50,7 @@ public class Tank : MonoBehaviour
             {
                 currentWheelCollider.brakeTorque = 0f;
 
-                int direction = gears[activeGear] == Gear.Drive ? 1 : -1;
+                int direction = ActiveGear() == Gear.Drive ? 1 : -1;
                 currentWheelCollider.motorTorque = direction * movementInput * accelerationForce;
 
                 // Directly limits the tank's velocity
@@ -80,5 +80,10 @@ public class Tank : MonoBehaviour
         {
             activeGear = 0;
         }
+    }
+
+    private Gear ActiveGear()
+    {
+        return gears[activeGear];
     }
 }
