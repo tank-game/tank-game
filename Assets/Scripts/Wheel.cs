@@ -6,6 +6,7 @@ public class Wheel : MonoBehaviour
 
     public Transform model;
     public bool scaleModel;
+    public bool rotateModel;
 
     public Transform bone;
 
@@ -27,6 +28,8 @@ public class Wheel : MonoBehaviour
         wheelCollider.GetWorldPose(out position, out rotation);
 
         model.position = position;
+        if (rotateModel) { model.rotation = rotation; }
+
         bone.position = position;
     }
 }

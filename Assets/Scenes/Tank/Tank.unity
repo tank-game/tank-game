@@ -3216,6 +3216,7 @@ MonoBehaviour:
   wheelCollider: {fileID: 0}
   model: {fileID: 1848209084}
   scaleModel: 1
+  rotateModel: 1
   bone: {fileID: 8473543713829970092}
 --- !u!4 &2762314635281130470
 Transform:
@@ -3342,6 +3343,7 @@ MonoBehaviour:
   wheelCollider: {fileID: 0}
   model: {fileID: 1136777799}
   scaleModel: 1
+  rotateModel: 1
   bone: {fileID: 8473543713829970060}
 --- !u!114 &2762314635496402584
 MonoBehaviour:
@@ -3545,6 +3547,7 @@ MonoBehaviour:
   wheelCollider: {fileID: 0}
   model: {fileID: 1717483689}
   scaleModel: 1
+  rotateModel: 1
   bone: {fileID: 8473543713829970068}
 --- !u!4 &2762314635801281668
 Transform:
@@ -3657,6 +3660,7 @@ MonoBehaviour:
   wheelCollider: {fileID: 0}
   model: {fileID: 1718011315}
   scaleModel: 1
+  rotateModel: 1
   bone: {fileID: 8473543713829970064}
 --- !u!20 &2762314636020665420
 Camera:
@@ -3819,6 +3823,7 @@ MonoBehaviour:
   wheelCollider: {fileID: 0}
   model: {fileID: 1318511060}
   scaleModel: 1
+  rotateModel: 1
   bone: {fileID: 8473543713829970088}
 --- !u!146 &2762314636299631228
 WheelCollider:
@@ -3899,6 +3904,7 @@ MonoBehaviour:
   wheelCollider: {fileID: 0}
   model: {fileID: 2008851124}
   scaleModel: 1
+  rotateModel: 1
   bone: {fileID: 8473543713829970072}
 --- !u!1 &2762314636561350396
 GameObject:
@@ -4017,6 +4023,7 @@ MonoBehaviour:
   wheelCollider: {fileID: 0}
   model: {fileID: 337134659}
   scaleModel: 1
+  rotateModel: 1
   bone: {fileID: 8473543713829970080}
 --- !u!146 &2762314636778643812
 WheelCollider:
@@ -4097,6 +4104,7 @@ MonoBehaviour:
   wheelCollider: {fileID: 0}
   model: {fileID: 295881937}
   scaleModel: 1
+  rotateModel: 1
   bone: {fileID: 8473543713829970084}
 --- !u!1 &2762314636883589945
 GameObject:
@@ -4215,6 +4223,7 @@ MonoBehaviour:
   wheelCollider: {fileID: 0}
   model: {fileID: 446054920}
   scaleModel: 1
+  rotateModel: 1
   bone: {fileID: 8473543713829970062}
 --- !u!146 &2762314637316570500
 WheelCollider:
@@ -4295,6 +4304,7 @@ MonoBehaviour:
   wheelCollider: {fileID: 0}
   model: {fileID: 2105938309}
   scaleModel: 1
+  rotateModel: 1
   bone: {fileID: 8473543713829970076}
 --- !u!4 &4489531153057966875
 Transform:
