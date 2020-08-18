@@ -10,7 +10,7 @@ public class Gun : MonoBehaviour
     // The time (in seconds) that it takes to load a new magazine
     [Range(1f, 10f)] public float reloadTime;
 
-    private int remainingAmmo;
+    [HideInInspector] public int remainingAmmo;
 
     [Header("Shooting")]
     public Transform muzzle;

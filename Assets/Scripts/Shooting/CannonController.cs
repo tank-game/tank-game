@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class CannonController : WeaponController
 {
     public Cannon cannon;
+
+    public Slider loadingIndicator; // TODO: Rename?
 
     void Update()
     {
@@ -10,5 +13,7 @@ public class CannonController : WeaponController
         {
             cannon.Shoot();
         }
+
+        loadingIndicator.value = cannon.LoadingProgress();
     }
 }

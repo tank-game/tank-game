@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
+using TMPro;
 
 public class GunController : WeaponController
 {
     public Gun gun;
+
+    public TextMeshProUGUI ammoIndicator;
 
     void Update()
     {
@@ -15,5 +18,7 @@ public class GunController : WeaponController
         {
             gun.Reload();
         }
+
+        ammoIndicator.text = gun.remainingAmmo.ToString() + " / " + gun.initialAmmo.ToString();
     }
 }

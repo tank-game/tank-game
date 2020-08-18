@@ -24,4 +24,10 @@ public class Cannon : MonoBehaviour
             nextShootTime = Time.time + reloadTime;
         }
     }
+
+    public float LoadingProgress()
+    {
+        float timeUntilNextLoad = Mathf.Clamp(nextShootTime - Time.time, 0f, reloadTime);
+        return 1f - (timeUntilNextLoad / reloadTime);
+    }
 }
