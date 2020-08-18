@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Target : MonoBehaviour
 {
     public float initialHealth;
     public bool destroyOnDeath;
+
+    public Slider healthBar;
 
     private float remainingHealth;
 
@@ -18,6 +21,11 @@ public class Target : MonoBehaviour
         {
             enabled = false;
             if (destroyOnDeath) { Destroy(gameObject); }
+        }
+
+        if (healthBar)
+        {
+            healthBar.value = remainingHealth / initialHealth;
         }
     }
 

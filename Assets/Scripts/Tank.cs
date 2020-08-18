@@ -82,7 +82,7 @@ public class Tank : MonoBehaviour
         }
     }
 
-    private Gear ActiveGear()
+    public Gear ActiveGear()
     {
         return gears[activeGear];
     }
