@@ -16,4 +16,17 @@ public class CannonController : WeaponController
 
         loadingIndicator.value = cannon.LoadingProgress();
     }
+
+    public override void Equip()
+    {
+        this.enabled = true;
+        loadingIndicator.value = cannon.LoadingProgress();
+        loadingIndicator.gameObject.SetActive(true);
+    }
+
+    public override void Unequip()
+    {
+        this.enabled = false;
+        loadingIndicator.gameObject.SetActive(false);
+    }
 }

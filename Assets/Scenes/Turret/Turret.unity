@@ -316,11 +316,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LoadingIndicator
       objectReference: {fileID: 0}
-    - target: {fileID: 7793870730286429802, guid: 5cd16a1426cca564ba5ba96d306e3e95,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7793870730286429803, guid: 5cd16a1426cca564ba5ba96d306e3e95,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -429,12 +424,12 @@ PrefabInstance:
     - target: {fileID: 7793870730236538067, guid: 5cd16a1426cca564ba5ba96d306e3e95,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.75
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7793870730236538067, guid: 5cd16a1426cca564ba5ba96d306e3e95,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7793870730236538064, guid: 5cd16a1426cca564ba5ba96d306e3e95,
         type: 3}

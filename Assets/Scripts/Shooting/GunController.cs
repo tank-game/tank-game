@@ -21,4 +21,16 @@ public class GunController : WeaponController
 
         ammoIndicator.text = gun.remainingAmmo.ToString() + " / " + gun.initialAmmo.ToString();
     }
+
+    public override void Equip()
+    {
+        this.enabled = true;
+        ammoIndicator.gameObject.SetActive(true);
+    }
+
+    public override void Unequip()
+    {
+        this.enabled = false;
+        ammoIndicator.gameObject.SetActive(true);
+    }
 }

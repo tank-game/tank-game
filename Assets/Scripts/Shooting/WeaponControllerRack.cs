@@ -4,32 +4,40 @@ public class WeaponControllerRack : MonoBehaviour
 {
     public WeaponController[] weaponControllers;
 
-    private int activeWeaponController;
+    private int activeWeaponControllerIndex;
 
     void Start()
     {
-        activeWeaponController = 0;
+        activeWeaponControllerIndex = 0;
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q)) { ToggleWeapon(); }
 
+        print(activeWeaponControllerIndex);
         for (int i = 0; i < weaponControllers.Length; i++)
         {
-            weaponControllers[i].enabled = i == activeWeaponController;
+            if (i == activeWeaponControllerIndex)
+            {
+                weaponControllers[i].Equip();
+            }
+            else
+            {
+                weaponControllers[i].Unequip();
+            }
         }
     }
 
     private void ToggleWeapon()
     {
-        if (activeWeaponController == weaponControllers.Length - 1)
+        if (activeWeaponControllerIndex == weaponControllers.Length - 1)
         {
-            activeWeaponController = 0;
+            activeWeaponControllerIndex = 0;
         }
         else
         {
-            activeWeaponController += 1;
+            activeWeaponControllerIndex += 1;
         }
     }
 }
