@@ -21,11 +21,6 @@ public class TankController : MonoBehaviour
         }
 
         gearIndicator.text = tank.ActiveGear() == Gear.Drive ? "Drive" : "Reverse";
-
-        if (Input.GetMouseButton(0))
-        {
-            GetComponent<Target>().Hit(50 * Time.deltaTime);
-        }
     }
 
     void FixedUpdate()
