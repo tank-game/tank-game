@@ -16,7 +16,7 @@ public class ThirdPersonCameraController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    private void LateUpdate()
+    private void Update()
     {
         CamControl();
     }
@@ -29,8 +29,8 @@ public class ThirdPersonCameraController : MonoBehaviour
 
         transform.LookAt(Target);
 
-        Target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
-        Player.rotation = Quaternion.Euler(0, mouseX, 0);
+        Target.localRotation = Quaternion.Euler(mouseY, mouseX, 0);
+        Player.localRotation = Quaternion.Euler(0, mouseX, 0);
     }
 
 }

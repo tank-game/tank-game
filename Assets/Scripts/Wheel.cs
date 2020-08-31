@@ -16,7 +16,7 @@ public class Wheel : MonoBehaviour
 
         if (scaleModel)
         {
-            float wheelDiameter = wheelCollider.radius * 2f;
+            float wheelDiameter = wheelCollider.radius * 2f * 0.9f;
             model.localScale = Vector3.one * wheelDiameter;
         }
     }
