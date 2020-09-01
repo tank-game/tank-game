@@ -12,7 +12,10 @@ public class AITankController : MonoBehaviour
     void Update()
     {
         GameObject closestPlayer = radar.FindClosestPlayer();
-        targetPlayer = radar.CanDetect(closestPlayer) ? closestPlayer : null;
+        if (closestPlayer)
+        {
+            targetPlayer = radar.CanDetect(closestPlayer) ? closestPlayer : null;
+        }
 
         detectionIndicator.SetActive(targetPlayer);
         detectionIndicator.transform.LookAt(Camera.main.transform.position);

@@ -9,7 +9,7 @@ public class ThirdPersonCameraController : MonoBehaviour
     public Transform Target, Player;
     float mouseX, mouseY;
 
-   
+
     void Start()
     {
         Cursor.visible = false;
