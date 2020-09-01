@@ -4,57 +4,35 @@ public class AITankController : MonoBehaviour
 {
     public Tank tank;
 
-    [Range(10f, 100f)] public float detectionRange;
+    public Radar radar;
+    public GameObject detectionIndicator;
 
-    private Transform currentTarget;
+    private GameObject targetPlayer;
 
     void Update()
     {
-        currentTarget = FindClosestPlayer();
-        print(currentTarget);
+        GameObject closestPlayer = radar.FindClosestPlayer();
+        targetPlayer = radar.CanDetect(closestPlayer) ? closestPlayer : null;
+
+        detectionIndicator.SetActive(targetPlayer);
+        detectionIndicator.transform.LookAt(Camera.main.transform.position);
     }
 
-    private Transform FindClosestPlayer()
+    void FixedUpdate()
     {
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        // If the closest player can be detected, rotate and move towards them
+        if (targetPlayer)
+        {
+            Vector3 relativePosition = targetPlayer.transform.position - transform.position;
+            Quaternion lookRotation = Quaternion.LookRotation(relativePosition);
 
-        if (players.Length == 0)
-        {
-            return null;
-        }
-        else if (players.Length == 1)
-        {
-            // TODO: Extract players[0] into a variable?
-            if (CanDetect(players[0]))
-            {
-                return players[0].transform;
-            }
-            else
-            {
-                return null;
-            }
+            float relativeRotation = Mathf.DeltaAngle(transform.rotation.eulerAngles.y, lookRotation.eulerAngles.y);
+            float scaledRotation = Mathf.Clamp((relativeRotation / 180f) * 5f, -1f, 1f);
+            tank.Move(0f, scaledRotation);
         }
         else
         {
-            float lowestDistance = Vector3.Distance(transform.position, players[0].transform.position);
-            GameObject closestPlayer = null;
-
-            foreach (GameObject player in players)
-            {
-                float distance = Vector3.Distance(transform.position, player.transform.position);
-                if (distance < lowestDistance)
-                {
-                    lowestDistance = distance;
-                    closestPlayer = player;
-                }
-            }
-
-            return closestPlayer.transform;
+            // TODO: Maybe move idly about?
         }
-    }
-
-    private bool CanDetect(GameObject player)
-    {
-        return Vector3.Distance(transform.position, player.transform.position) <= detectionRange;
     }
 }
