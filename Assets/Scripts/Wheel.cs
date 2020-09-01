@@ -9,6 +9,7 @@ public class Wheel : MonoBehaviour
     public bool rotateModel;
 
     public Transform bone;
+    public float trackHeightOffset;
 
     void Start()
     {
@@ -30,6 +31,6 @@ public class Wheel : MonoBehaviour
         model.position = position;
         if (rotateModel) { model.rotation = rotation; }
 
-        bone.position = position;
+        bone.position = position + new Vector3(0f, trackHeightOffset, 0f);
     }
 }
