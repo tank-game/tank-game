@@ -6,8 +6,8 @@ public class ThirdPersonCameraController : MonoBehaviour
 {
 
     public float RotationSpeed = 1;
-    public Transform Target, Player;
-    float mouseX, mouseY;
+    public Transform Target, Player, Camera;
+    float mouseX, mouseY, cameraY, cameraZ;
 
    
     void Start()
@@ -19,6 +19,10 @@ public class ThirdPersonCameraController : MonoBehaviour
     private void Update()
     {
         CamControl();
+
+        CamZoom();
+
+        Camera.localPosition = (0, cameraY, cameraZ);
     }
 
     void CamControl()
@@ -29,8 +33,16 @@ public class ThirdPersonCameraController : MonoBehaviour
 
         transform.LookAt(Target);
 
-        Target.localRotation = Quaternion.Euler(mouseY, mouseX, 0);
+        Target.localRotation = Quaternion.Euler(mouseY, 0, 0);
         Player.localRotation = Quaternion.Euler(0, mouseX, 0);
+    }
+
+    void CamZoom()
+    {
+        if (Input.GetKeyDown ("-"))
+        {
+
+        }
     }
 
 }
