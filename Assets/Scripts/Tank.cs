@@ -20,11 +20,11 @@ public class Tank : MonoBehaviour
     private int activeGear;
 
     [Header("Engine")]
-    [Range(10f, 100f)] public float accelerationForce;
-    [Range(10f, 100f)] public float brakeForce;
+    [Range(10f, 1000f)] public float accelerationForce;
+    [Range(10f, 1000f)] public float brakeForce;
 
-    [Range(5f, 30f)] public float topSpeed; // In metres/second
-    [Range(5f, 30f)] public float turnRate; // In degrees/second
+    [Range(5f, 1000f)] public float topSpeed; // In metres/second
+    [Range(5f, 1000f)] public float turnRate; // In degrees/second
 
     void Start()
     {
