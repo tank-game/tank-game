@@ -22,7 +22,7 @@ public class ThirdPersonCameraController : MonoBehaviour
 
         CamZoom();
 
-        Camera.localPosition = (0, cameraY, cameraZ);
+        //Camera.localPosition = (0, cameraY, cameraZ);
     }
 
     void CamControl()
