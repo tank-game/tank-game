@@ -4289,7 +4289,7 @@ MonoBehaviour:
   accelerationForce: 65
   brakeForce: 100
   topSpeed: 25
-  turnRate: 25
+  turnRate: 30
 --- !u!4 &2762314635496402586
 Transform:
   m_ObjectHideFlags: 0
