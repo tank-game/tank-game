@@ -8,6 +8,7 @@ public class ThirdPersonCameraController : MonoBehaviour
     public float RotationSpeed = 1;
     public Transform Target, Player, Camera;
     float mouseX, mouseY, cameraY, cameraZ;
+    bool cameraLock;
 
    
     void Start()
@@ -23,6 +24,8 @@ public class ThirdPersonCameraController : MonoBehaviour
         CamZoom();
 
         //Camera.localPosition = (0, cameraY, cameraZ);
+
+        CamLock();
     }
 
     void CamControl()
@@ -43,6 +46,11 @@ public class ThirdPersonCameraController : MonoBehaviour
         {
 
         }
+    }
+
+    void CamLock()
+    {
+       //GetButtonDown
     }
 
 }
