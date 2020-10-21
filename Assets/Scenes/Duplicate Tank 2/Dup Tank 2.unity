@@ -2685,7 +2685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   centreOfMass: {fileID: 1089976851}
-  movementMode: 0
+  movementMode: 1
   accelerationForce: 25000
   automaticBrakeForce: 0
   topSpeed: 20
