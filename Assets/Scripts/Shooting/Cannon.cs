@@ -19,7 +19,7 @@ public class Cannon : MonoBehaviour
                 muzzle.position,
                 Quaternion.identity
             );
-            spawnedRound.GetComponent<Rigidbody>().velocity = muzzle.transform.forward * power;
+            spawnedRound.GetComponent<Rigidbody>().velocity = muzzle.forward * power;
 
             nextShootTime = Time.time + reloadTime;
         }

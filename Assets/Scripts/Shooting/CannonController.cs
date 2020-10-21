@@ -14,7 +14,7 @@ public class CannonController : WeaponController
             cannon.Shoot();
         }
 
-        loadingIndicator.value = cannon.LoadingProgress();
+        if (loadingIndicator) { loadingIndicator.value = cannon.LoadingProgress(); }
     }
 
     public override void Equip()
