@@ -4,10 +4,15 @@ public class Turret : MonoBehaviour
 {
     public Transform mantlet;
 
+    public float maxElevation;
+    public float maxDepression;
+
     [Range(0f, 0.099f)] public float smoothness;
 
     public void RotateTo(float yaw, float pitch)
     {
+        pitch = Mathf.Clamp(pitch, -maxElevation, maxDepression);
+
         float realSmoothness = 0.1f - smoothness;
 
         Vector3 targetRotation = transform.localRotation.eulerAngles;
