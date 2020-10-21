@@ -6,8 +6,13 @@ public class Turret : MonoBehaviour
 
     [Range(0f, 0.099f)] public float smoothness;
 
+    public float maxElevation;
+    public float maxDepression;
+
     public void RotateTo(float yaw, float pitch)
     {
+        pitch = Mathf.Clamp(pitch, -maxElevation, maxDepression);
+
         float realSmoothness = 0.1f - smoothness;
 
         Vector3 targetRotation = transform.localRotation.eulerAngles;

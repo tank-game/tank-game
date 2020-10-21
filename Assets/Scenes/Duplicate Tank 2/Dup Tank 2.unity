@@ -845,8 +845,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchor: {fileID: 696906296}
   sensitivity: 3
-  maxElevation: 10
-  maxDepression: 5
   turret: {fileID: 919132148108665389}
 --- !u!1 &1017453041
 GameObject:
@@ -2109,6 +2107,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mantlet: {fileID: 543450653024836310}
   smoothness: 0.094
+  maxElevation: 10
+  maxDepression: 5
 --- !u!1 &919132148765524076
 GameObject:
   m_ObjectHideFlags: 0
@@ -2685,11 +2685,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   centreOfMass: {fileID: 1089976851}
-  gears: 0000000001000000
+  movementMode: 0
   accelerationForce: 25000
-  brakeForce: 10
+  automaticBrakeForce: 0
   topSpeed: 20
   turnRate: 40
+  gears: 0000000001000000
 --- !u!4 &2762314635496402586
 Transform:
   m_ObjectHideFlags: 0
