@@ -2,32 +2,52 @@
 
 public class Turret : MonoBehaviour
 {
-    public Transform barrelHinge;
+    public Transform mantlet;
 
-    [Range(1f, 10f)] public float rotationSpeed;
+    [Range(0f, 0.099f)] public float smoothness;
 
-    [Range(0f, 90f)] public float maxBarrelElevation;
-    [Range(0f, 45f)] public float maxBarrelDepression;
-
-    public void AimAt(Vector3 point)
+    public void RotateTo(float yaw, float pitch)
     {
-        Quaternion lookRotation = Quaternion.LookRotation(point - transform.position, Vector3.up);
+        float realSmoothness = 0.1f - smoothness;
 
-        transform.rotation = Quaternion.Lerp(
-            transform.rotation,
-            Quaternion.Euler(0f, lookRotation.eulerAngles.y, 0f),
-            Time.deltaTime * rotationSpeed
+        Vector3 targetRotation = transform.localRotation.eulerAngles;
+        targetRotation.y = yaw;
+
+        transform.localRotation = Quaternion.Lerp(
+            transform.localRotation,
+            Quaternion.Euler(targetRotation),
+            realSmoothness
         );
 
-        barrelHinge.localRotation = Quaternion.Lerp(
-            barrelHinge.localRotation,
-            Quaternion.Euler(ClampAngle(lookRotation.eulerAngles.x, -maxBarrelElevation, maxBarrelDepression), 0f, 0f),
-            Time.deltaTime * rotationSpeed
+        Vector3 targetMantletRotation = mantlet.localRotation.eulerAngles;
+        targetMantletRotation.x = pitch;
+
+        mantlet.localRotation = Quaternion.Lerp(
+            mantlet.localRotation,
+            Quaternion.Euler(targetMantletRotation),
+            realSmoothness
         );
     }
 
-    private float ClampAngle(float angle, float min, float max)
-    {
-        return Mathf.Clamp(angle > 180f ? angle - 360f : angle, min, max);
-    }
+    // public void AimAt(Vector3 point)
+    // {
+    //     Quaternion lookRotation = Quaternion.LookRotation(point - transform.position, Vector3.up);
+
+    //     transform.rotation = Quaternion.Lerp(
+    //         transform.rotation,
+    //         Quaternion.Euler(0f, lookRotation.eulerAngles.y, 0f),
+    //         Time.deltaTime * rotationSpeed
+    //     );
+
+    //     barrelHinge.localRotation = Quaternion.Lerp(
+    //         barrelHinge.localRotation,
+    //         Quaternion.Euler(ClampAngle(lookRotation.eulerAngles.x, -maxBarrelElevation, maxBarrelDepression), 0f, 0f),
+    //         Time.deltaTime * rotationSpeed
+    //     );
+    // }
+
+    // private float ClampAngle(float angle, float min, float max)
+    // {
+    //     return Mathf.Clamp(angle > 180f ? angle - 360f : angle, min, max);
+    // }
 }
