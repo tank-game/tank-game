@@ -2685,12 +2685,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   centreOfMass: {fileID: 1089976851}
-  movementMode: 0
-  accelerationForce: 25000
-  automaticBrakeForce: 0
-  topSpeed: 20
-  turnRate: 40
-  gears: 0000000001000000
+  accelerationForce: 9769
+  automaticBraking: 1
+  topSpeed: 9.8
+  turnRate: 22.2
 --- !u!4 &2762314635496402586
 Transform:
   m_ObjectHideFlags: 0
@@ -2739,7 +2737,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tank: {fileID: 2762314635496402584}
-  gearIndicator: {fileID: 0}
 --- !u!1 &2762314635496402661
 GameObject:
   m_ObjectHideFlags: 0

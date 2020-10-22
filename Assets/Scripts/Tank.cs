@@ -1,69 +1,48 @@
 ﻿using UnityEngine;
 
-public enum Gear
-{
-    Drive,
-    Reverse
-}
-
 [RequireComponent(typeof(Rigidbody))]
 public class Tank : MonoBehaviour
 {
     public Transform centreOfMass;
 
+    [Range(5000f, 15000f)] public float accelerationForce;
+    public bool automaticBraking;
+
+    [Range(5f, 15f)] public float topSpeed; // In metres/second
+    [Range(5f, 40f)] public float turnRate; // In degrees/second
+
     private Rigidbody rb;
     private Wheel[] wheels;
-
-    [Header("Gearbox")]
-    public Gear[] gears;
-
-    private int activeGear;
-
-    [Header("Engine")]
-    [Range(10f, 1000f)] public float accelerationForce;
-    [Range(10f, 1000f)] public float brakeForce;
-
-    [Range(5f, 1000f)] public float topSpeed; // In metres/second
-    [Range(5f, 1000f)] public float turnRate; // In degrees/second
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        if (centreOfMass != null)
-        {
-            rb.centerOfMass = centreOfMass.localPosition;
-        }
+        if (centreOfMass) { rb.centerOfMass = centreOfMass.localPosition; }
 
         wheels = GetComponentsInChildren<Wheel>();
-
-        activeGear = 0;
     }
 
     public void Move(float movementInput, float rotationInput)
     {
         for (int i = 0; i < wheels.Length; i++)
         {
-            Wheel currentWheel = wheels[i];
-            WheelCollider currentWheelCollider = currentWheel.wheelCollider;
+            WheelCollider currentWheelCollider = wheels[i].wheelCollider;
 
-            if (movementInput >= 0f)
+            if (movementInput == 0f)
             {
-                currentWheelCollider.brakeTorque = 0f;
-
-                int direction = ActiveGear() == Gear.Drive ? 1 : -1;
-                currentWheelCollider.motorTorque = direction * movementInput * accelerationForce;
-
-                // Directly limits the tank's velocity
-                if (rb.velocity.magnitude >= topSpeed)
-                {
-                    rb.velocity = rb.velocity.normalized * topSpeed;
-                }
+                currentWheelCollider.brakeTorque = automaticBraking ? 1f : 0f;
             }
             else
             {
-                currentWheelCollider.motorTorque = 0f;
-                currentWheelCollider.brakeTorque = Mathf.Abs(movementInput) * brakeForce;
+                currentWheelCollider.brakeTorque = 0f;
+                currentWheelCollider.motorTorque = movementInput * accelerationForce;
             }
+        }
+
+        // Directly limits the tank's velocity
+        if (rb.velocity.magnitude >= topSpeed)
+        {
+            rb.velocity = rb.velocity.normalized * topSpeed;
         }
 
         Quaternion deltaRotation = Quaternion.AngleAxis(
@@ -71,19 +50,5 @@ public class Tank : MonoBehaviour
             transform.up
         );
         rb.MoveRotation(transform.rotation * deltaRotation);
-    }
-
-    public void ToggleGear()
-    {
-        activeGear += 1;
-        if (activeGear == gears.Length)
-        {
-            activeGear = 0;
-        }
-    }
-
-    public Gear ActiveGear()
-    {
-        return gears[activeGear];
     }
 }
