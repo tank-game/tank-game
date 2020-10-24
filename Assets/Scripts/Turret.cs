@@ -4,7 +4,8 @@ public class Turret : MonoBehaviour
 {
     public Transform mantlet;
 
-    [Range(0f, 0.099f)] public float smoothness;
+    // [Range(0f, 0.099f)] public float smoothness;
+    public float rotationSpeed;
 
     public float maxElevation;
     public float maxDepression;
@@ -13,24 +14,36 @@ public class Turret : MonoBehaviour
     {
         pitch = Mathf.Clamp(pitch, -maxElevation, maxDepression);
 
-        float realSmoothness = 0.1f - smoothness;
+        // float realSmoothness = 0.1f - smoothness;
 
         Vector3 targetRotation = transform.localRotation.eulerAngles;
         targetRotation.y = yaw;
 
-        transform.localRotation = Quaternion.Lerp(
+        // transform.localRotation = Quaternion.Lerp(
+        //     transform.localRotation,
+        //     Quaternion.Euler(targetRotation),
+        //     realSmoothness
+        // );
+
+        transform.localRotation = Quaternion.RotateTowards(
             transform.localRotation,
             Quaternion.Euler(targetRotation),
-            realSmoothness
+            Time.deltaTime * rotationSpeed
         );
 
         Vector3 targetMantletRotation = mantlet.localRotation.eulerAngles;
         targetMantletRotation.x = pitch;
 
-        mantlet.localRotation = Quaternion.Lerp(
+        // mantlet.localRotation = Quaternion.Lerp(
+        //     mantlet.localRotation,
+        //     Quaternion.Euler(targetMantletRotation),
+        //     realSmoothness
+        // );
+
+        mantlet.localRotation = Quaternion.RotateTowards(
             mantlet.localRotation,
             Quaternion.Euler(targetMantletRotation),
-            realSmoothness
+            Time.deltaTime * rotationSpeed
         );
     }
 
