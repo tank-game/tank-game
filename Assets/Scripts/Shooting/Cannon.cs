@@ -5,7 +5,7 @@ public class Cannon : MonoBehaviour
     public GameObject round;
     public Transform muzzle;
 
-    
+
 
     [Range(0f, 1000f)] public float power;
     [Range(1f, 100f)] public float reloadTime;
@@ -13,16 +13,12 @@ public class Cannon : MonoBehaviour
     private float nextShootTime;
     private Vector3 lastRayHitPoint;
 
-    void Start()
-    {
-        lastRayHitPoint = Vector3.zero;
-    }
-
     Animator m_animator;
 
     private void Start()
     {
         m_animator = GetComponent<Animator>();
+        lastRayHitPoint = Vector3.zero;
     }
 
     public void Shoot()
