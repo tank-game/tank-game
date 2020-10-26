@@ -9,6 +9,12 @@ public class Cannon : MonoBehaviour
     [Range(1f, 10f)] public float reloadTime;
 
     private float nextShootTime;
+    private Vector3 lastRayHitPoint;
+
+    void Start()
+    {
+        lastRayHitPoint = Vector3.zero;
+    }
 
     public void Shoot()
     {
@@ -29,5 +35,17 @@ public class Cannon : MonoBehaviour
     {
         float timeUntilNextLoad = Mathf.Clamp(nextShootTime - Time.time, 0f, reloadTime);
         return 1f - (timeUntilNextLoad / reloadTime);
+    }
+
+    public Vector3 RayPoint()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(muzzle.position, muzzle.forward, out hit))
+        {
+            lastRayHitPoint = hit.point;
+        }
+
+        return lastRayHitPoint;
     }
 }
