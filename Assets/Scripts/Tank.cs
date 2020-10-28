@@ -11,6 +11,10 @@ public class Tank : MonoBehaviour
     [Range(5f, 15f)] public float topSpeed; // In metres/second
     [Range(5f, 40f)] public float turnRate; // In degrees/second
 
+    public Sprocket[] leftSprockets;
+    public Sprocket[] rightSprockets;
+    public float sprocketRotationSpeed;
+
     private Rigidbody rb;
     private Wheel[] wheels;
 
@@ -24,18 +28,18 @@ public class Tank : MonoBehaviour
 
     public void Move(float movementInput, float rotationInput)
     {
-        for (int i = 0; i < wheels.Length; i++)
+        foreach (Wheel wheel in wheels)
         {
-            WheelCollider currentWheelCollider = wheels[i].wheelCollider;
+            WheelCollider wheelCollider = wheel.wheelCollider;
 
             if (movementInput == 0f)
             {
-                currentWheelCollider.brakeTorque = automaticBraking ? 1f : 0f;
+                wheelCollider.brakeTorque = automaticBraking ? 1f : 0f;
             }
             else
             {
-                currentWheelCollider.brakeTorque = 0f;
-                currentWheelCollider.motorTorque = movementInput * accelerationForce;
+                wheelCollider.brakeTorque = 0f;
+                wheelCollider.motorTorque = movementInput * accelerationForce;
             }
         }
 
