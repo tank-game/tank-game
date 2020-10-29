@@ -1888,7 +1888,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1456307216
 Transform:
   m_ObjectHideFlags: 0
@@ -7912,7 +7912,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2008635484
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7952,7 +7952,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 9d69ddb9e322d5d47aeb80a207b98b58, type: 3}
+  m_Texture: {fileID: 0}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -9045,6 +9045,9 @@ MonoBehaviour:
   automaticBraking: 1
   topSpeed: 9.8
   turnRate: 22.2
+  leftSprockets: []
+  rightSprockets: []
+  sprocketRotationSpeed: 0
 --- !u!4 &2762314635496402586
 Transform:
   m_ObjectHideFlags: 0
