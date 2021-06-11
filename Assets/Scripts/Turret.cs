@@ -2,40 +2,70 @@
 
 public class Turret : MonoBehaviour
 {
-    [Range(1f, 10f)] public float rotationSpeed;
-    public Transform barrelHinge;
-    [Range(0f, 90f)] public float maxBarrelElevation;
-    [Range(0f, 45f)] public float maxBarrelDepression;
+    public Transform mantlet;
 
-    void Update()
+    // [Range(0f, 0.099f)] public float smoothness;
+    public float rotationSpeed;
+
+    public float maxElevation;
+    public float maxDepression;
+
+    public void RotateTo(float yaw, float pitch)
     {
-        RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
-        {
-            LookTowards(hit.point);
-        }
-    }
+        pitch = Mathf.Clamp(pitch, -maxElevation, maxDepression);
 
-    private float ClampAngle(float angle, float min, float max)
-    {
-        angle = (angle > 180f) ? angle - 360f : angle;
-        return Mathf.Clamp(angle, min, max);
-    }
+        // float realSmoothness = 0.1f - smoothness;
 
-    private void LookTowards(Vector3 point)
-    {
-        Quaternion lookRotation = Quaternion.LookRotation(point - transform.position, Vector3.up);
+        Vector3 targetRotation = transform.localRotation.eulerAngles;
+        targetRotation.y = yaw;
 
-        transform.rotation = Quaternion.Lerp(
-            transform.rotation,
-            Quaternion.Euler(0f, lookRotation.eulerAngles.y, 0f),
+        // transform.localRotation = Quaternion.Lerp(
+        //     transform.localRotation,
+        //     Quaternion.Euler(targetRotation),
+        //     realSmoothness
+        // );
+
+        transform.localRotation = Quaternion.RotateTowards(
+            transform.localRotation,
+            Quaternion.Euler(targetRotation),
             Time.deltaTime * rotationSpeed
         );
 
-        barrelHinge.localRotation = Quaternion.Lerp(
-            barrelHinge.localRotation,
-            Quaternion.Euler(ClampAngle(lookRotation.eulerAngles.x, -maxBarrelElevation, maxBarrelDepression), 0f, 0f),
+        Vector3 targetMantletRotation = mantlet.localRotation.eulerAngles;
+        targetMantletRotation.x = pitch;
+
+        // mantlet.localRotation = Quaternion.Lerp(
+        //     mantlet.localRotation,
+        //     Quaternion.Euler(targetMantletRotation),
+        //     realSmoothness
+        // );
+
+        mantlet.localRotation = Quaternion.RotateTowards(
+            mantlet.localRotation,
+            Quaternion.Euler(targetMantletRotation),
             Time.deltaTime * rotationSpeed
         );
     }
+
+    // public void AimAt(Vector3 point)
+    // {
+    //     Quaternion lookRotation = Quaternion.LookRotation(point - transform.position, Vector3.up);
+
+    //     transform.rotation = Quaternion.Lerp(
+    //         transform.rotation,
+    //         Quaternion.Euler(0f, lookRotation.eulerAngles.y, 0f),
+    //         Time.deltaTime * rotationSpeed
+    //     );
+
+    //     barrelHinge.localRotation = Quaternion.Lerp(
+    //         barrelHinge.localRotation,
+    //         Quaternion.Euler(ClampAngle(lookRotation.eulerAngles.x, -maxBarrelElevation, maxBarrelDepression), 0f, 0f),
+    //         Time.deltaTime * rotationSpeed
+    //     );
+    // }
+
+    // private float ClampAngle(float angle, float min, float max)
+    // {
+    //     return Mathf.Clamp(angle > 180f ? angle - 360f : angle, min, max);
+    // }
 }
